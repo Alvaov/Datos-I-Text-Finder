@@ -5,6 +5,9 @@
  */
 package ArbolBinario;
 
+import java.io.File;
+import listlinked.ListLinked;
+
 /**
  * Esta clase es la base de los arboles binarios.
  * @author Brian Wagemans Alvarado
@@ -14,6 +17,7 @@ public class Nodo<T> {
     private Nodo nodoIzq;
     private Nodo nodoDer;
     private T valor;
+    private ListLinked<File> repeticiones;
     /**
      * crea un nodo con los parametros ingresados
      * @param valor 
@@ -75,5 +79,19 @@ public class Nodo<T> {
      */
     public void setValor(T valorNuevo){
         this.valor = valorNuevo;
+    }
+    /**
+     * funcion que consigue la lista de repeticiones
+     * @return la lista de repeticiones
+     */
+    public ListLinked<File> getReferencias(){
+        return repeticiones;
+    }
+    /**
+     * Agrega un archivo a las repeticiones
+     * @param archivo archivo a agregar.
+     */
+    public void addReferencias(File archivo){
+        repeticiones.añadirFinal(archivo);
     }
 }
