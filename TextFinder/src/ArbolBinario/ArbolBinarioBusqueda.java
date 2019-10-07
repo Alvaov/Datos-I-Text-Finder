@@ -44,25 +44,36 @@ public class ArbolBinarioBusqueda<T> {
      * @param toFind
      * @return 
      */
-    public T find(T toFind){
-        Nodo<T> temp = raiz;
-        byte[] bytesToFind = toFind.toString().getBytes();
-        while(temp != null){
-            byte[] bytesToCompare = temp.getValor().toString().getBytes();
-            for(int i=0;i<bytesToCompare.length;i++){
-                if(i == bytesToCompare.length-1){
-                    if(bytesToCompare.length == bytesToFind.length){
-                       temp.addReferencias(toFind);
-                    }else{
+    public boolean find(T toFind){
+        Nodo<T> node = raiz;
+        byte[] NodeBytes = node.getValor().toString().getBytes();
+        byte[] toFindBytes = toFind.toString().getBytes();
+        int i = 0;
+        while(true){
+            if(NodeBytes[i] > toFindBytes[i]){
+                if(node.getNodoDerecho() != null){
+                    node = node.getNodoDerecho();
+                    NodeBytes = node.getValor().toString().getBytes();
+                }else{
+                    return false;
+                }
+            }else if(NodeBytes[i] < toFindBytes[i]){
+                if(node.getNodoIzquierdo() != null){
+                    node = node.getNodoIzquierdo();
+                    NodeBytes = node.getValor().toString().getBytes();
+                }else{
+                    return false;
+                }
+            }else{
+                i++;
+                if(i == toFindBytes.length && i == NodeBytes.length){
+                    return true;
                         
-                    }
+                }else{
+                    return false;
                 }
             }
         }
-        if(temp == null){
-            return null;
-        }
-        return temp.getValor();
     }
     
 }
