@@ -11,6 +11,7 @@ package listlinked;
  * https://www.cs.wcupa.edu/rkline/cs3/generic-lists.html
  * https://youtu.be/8oCjWIJJI9c
  * @author allva
+ * @param <T>
  */
 public class Nodo <T> {
    
