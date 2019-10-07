@@ -18,12 +18,14 @@ import javafx.stage.Stage;
  */
 public class TextFinder extends Application {
     
+    static Stage stage;
+    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
+        this.stage = stage;
         Scene scene = new Scene(root);
-        
+        stage.setTitle("Text Finder");
         stage.setScene(scene);
         stage.show();
     }
@@ -44,5 +46,7 @@ public class TextFinder extends Application {
        // arbol.retornarElemento("que tal");
         launch(args);
     }
-    
+    public static Stage getStage(){
+        return stage;
+    }
 }
