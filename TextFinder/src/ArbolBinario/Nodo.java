@@ -17,7 +17,7 @@ public class Nodo<T> {
     private Nodo nodoIzq;
     private Nodo nodoDer;
     private T valor;
-    private ListLinked<File> repeticiones;
+    private ListLinked<String> repeticiones;
     /**
      * crea un nodo con los parametros ingresados
      * @param valor 
@@ -84,14 +84,14 @@ public class Nodo<T> {
      * funcion que consigue la lista de repeticiones
      * @return la lista de repeticiones
      */
-    public ListLinked<File> getReferencias(){
+    public ListLinked<String> getReferencias(){
         return repeticiones;
     }
     /**
      * Agrega un archivo a las repeticiones
      * @param archivo archivo a agregar.
      */
-    public void addReferencias(File archivo){
+    public void addReferencias(String archivo){
         repeticiones.añadirFinal(archivo);
     }
 }

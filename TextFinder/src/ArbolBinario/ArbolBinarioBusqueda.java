@@ -10,7 +10,10 @@ package ArbolBinario;
  * @param <T> clase del arbol
  */
 public class ArbolBinarioBusqueda<T> {
-    Nodo raiz;
+    Nodo<T> raiz;
+    /**
+     * initizalices the Tree
+     */
     public ArbolBinarioBusqueda(){
         raiz = null;
     }
@@ -36,4 +39,30 @@ public class ArbolBinarioBusqueda<T> {
         }
         return temp.getValor();
     }
+    /**
+     * 
+     * @param toFind
+     * @return 
+     */
+    public T find(T toFind){
+        Nodo<T> temp = raiz;
+        byte[] bytesToFind = toFind.toString().getBytes();
+        while(temp != null){
+            byte[] bytesToCompare = temp.getValor().toString().getBytes();
+            for(int i=0;i<bytesToCompare.length;i++){
+                if(i == bytesToCompare.length-1){
+                    if(bytesToCompare.length == bytesToFind.length){
+                       temp.addReferencias(toFind);
+                    }else{
+                        
+                    }
+                }
+            }
+        }
+        if(temp == null){
+            return null;
+        }
+        return temp.getValor();
+    }
+    
 }
