@@ -5,6 +5,7 @@
  */
 package textfinder;
 
+import ArbolBinario.ArbolBinarioBusqueda;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,6 +32,12 @@ public class TextFinder extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        ArbolBinarioBusqueda arbol = new ArbolBinarioBusqueda();
+        arbol.añadirElemento("efe");
+        arbol.añadirElemento("largo");
+        arbol.añadirElemento("largo");
+        arbol.añadirElemento("maní");
         launch(args);
     }
     

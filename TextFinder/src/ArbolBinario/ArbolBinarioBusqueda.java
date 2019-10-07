@@ -36,4 +36,71 @@ public class ArbolBinarioBusqueda<T> {
         }
         return temp.getValor();
     }
+    
+    public void añadirElemento(T elemento){
+        
+        if(raiz == null){
+            raiz = new Nodo(elemento);
+            return;
+        }
+        
+        Nodo actual = raiz;
+        
+        Nodo nodo = new Nodo(elemento);
+        
+        byte[] nuevoNodoBytes = nodo.getValor().toString().getBytes();
+        byte[] actualNodoBytes = actual.getValor().toString().getBytes();
+        
+        int i = 0;
+        
+        while(true){
+            if(nuevoNodoBytes[i] > actualNodoBytes[i]){
+                
+                if(actual.getNodoDerecho() != null){
+                    actual = actual.getNodoDerecho();
+                    actualNodoBytes = actual.getValor().toString().getBytes();
+                }else{
+                    actual.setNodoDerecho(nodo);
+                    System.out.println("derecha");
+                    return;
+                }
+            }else if(nuevoNodoBytes[i] < actualNodoBytes[i]){
+                if(actual.getNodoIzquierdo() != null){
+                    actual = actual.getNodoIzquierdo();
+                    actualNodoBytes = actual.getValor().toString().getBytes();
+                }else{
+                    actual.setNodoIzquierdo(nodo);
+                    System.out.println("izquierda");
+                    return;
+                }
+            }else{
+                i++;
+                if(i == actualNodoBytes.length && i == nuevoNodoBytes.length){
+                    System.out.println("iguales");
+                    actual.addReferencias(nodo);
+                    return;
+                        
+                }else if(i+1 > actualNodoBytes.length){
+                    if(actual.getNodoDerecho() != null){
+                        actual = actual.getNodoDerecho();
+                        actualNodoBytes = actual.getValor().toString().getBytes();
+                    }else{
+                        actual.setNodoDerecho(nodo);
+                        System.out.println("Derecha impura");
+                        return;
+                    }
+                        
+                }else if(i+1 > nuevoNodoBytes.length){
+                    if(actual.getNodoIzquierdo() != null){
+                        actual = actual.getNodoIzquierdo();
+                        actualNodoBytes = actual.getValor().toString().getBytes();
+                    }else{
+                        System.out.println("Izquierda impura");
+                        actual.setNodoIzquierdo(nodo);
+                        return;
+                    }
+                }
+            }
+        }
+    }
 }

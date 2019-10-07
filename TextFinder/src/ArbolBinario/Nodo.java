@@ -17,7 +17,7 @@ public class Nodo<T> {
     private Nodo nodoIzq;
     private Nodo nodoDer;
     private T valor;
-    private ListLinked<File> repeticiones;
+    private ListLinked<T> repeticiones;
     /**
      * crea un nodo con los parametros ingresados
      * @param valor 
@@ -26,6 +26,7 @@ public class Nodo<T> {
         this.valor = valor;
         this.nodoDer = null;
         this.nodoIzq = null;
+        this.repeticiones = new ListLinked<>();
     }
     /**
      * crea un nodo con los parametros ingresados
@@ -49,8 +50,8 @@ public class Nodo<T> {
      * crea un nodo izquierdo con el valor ingresado
      * @param valor valor del nodo Izquierdo 
      */
-    public void setNodoIzquierdo(T valor){
-        this.nodoIzq = new Nodo(valor);
+    public void setNodoIzquierdo(Nodo valor){
+        this.nodoIzq = valor;
     }
     /**
      * retorna el hijo derecho del nodo
@@ -63,8 +64,8 @@ public class Nodo<T> {
      * crea un Nodo Derecho con el valor ingresado
      * @param valor nuevo valor
      */
-    public void setNodoDerecho(T valor){
-        this.nodoDer = new Nodo(valor);
+    public void setNodoDerecho(Nodo valor){
+        this.nodoDer = valor;
     }
     /**
      * retorna el valor del nodo
@@ -84,14 +85,14 @@ public class Nodo<T> {
      * funcion que consigue la lista de repeticiones
      * @return la lista de repeticiones
      */
-    public ListLinked<File> getReferencias(){
+    public ListLinked<T> getReferencias(){
         return repeticiones;
     }
     /**
      * Agrega un archivo a las repeticiones
      * @param archivo archivo a agregar.
      */
-    public void addReferencias(File archivo){
+    public void addReferencias(T archivo){
         repeticiones.añadirFinal(archivo);
     }
 }
