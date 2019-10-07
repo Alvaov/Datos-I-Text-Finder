@@ -36,8 +36,10 @@ public class TextFinder extends Application {
         ArbolBinarioBusqueda arbol = new ArbolBinarioBusqueda();
         arbol.añadirElemento("efe");
         arbol.añadirElemento("largo");
-        arbol.añadirElemento("largo");
-        arbol.añadirElemento("maní");
+      //  arbol.añadirElemento("lejos");
+     //   arbol.añadirElemento("maní");
+       // arbol.retornarElemento("lejos");
+        arbol.retornarElemento("que tal");
         launch(args);
     }
     

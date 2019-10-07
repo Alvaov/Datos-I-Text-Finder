@@ -59,6 +59,7 @@ public class ArbolBinarioBusqueda<T> {
                 if(actual.getNodoDerecho() != null){
                     actual = actual.getNodoDerecho();
                     actualNodoBytes = actual.getValor().toString().getBytes();
+                    i = 0;
                 }else{
                     actual.setNodoDerecho(nodo);
                     System.out.println("derecha");
@@ -68,6 +69,7 @@ public class ArbolBinarioBusqueda<T> {
                 if(actual.getNodoIzquierdo() != null){
                     actual = actual.getNodoIzquierdo();
                     actualNodoBytes = actual.getValor().toString().getBytes();
+                    i = 0;
                 }else{
                     actual.setNodoIzquierdo(nodo);
                     System.out.println("izquierda");
@@ -84,6 +86,7 @@ public class ArbolBinarioBusqueda<T> {
                     if(actual.getNodoDerecho() != null){
                         actual = actual.getNodoDerecho();
                         actualNodoBytes = actual.getValor().toString().getBytes();
+                        i = 0;
                     }else{
                         actual.setNodoDerecho(nodo);
                         System.out.println("Derecha impura");
@@ -94,10 +97,76 @@ public class ArbolBinarioBusqueda<T> {
                     if(actual.getNodoIzquierdo() != null){
                         actual = actual.getNodoIzquierdo();
                         actualNodoBytes = actual.getValor().toString().getBytes();
+                        i = 0;
                     }else{
                         System.out.println("Izquierda impura");
                         actual.setNodoIzquierdo(nodo);
                         return;
+                    }
+                }
+            }
+        }
+    }
+    
+    public Object retornarElemento(T elemento){
+        
+        if(raiz == null){
+            return -1;
+        }
+        
+        Nodo actual = raiz;
+        
+        Nodo nodo = new Nodo(elemento);
+        
+        byte[] nuevoNodoBytes = nodo.getValor().toString().getBytes();
+        byte[] actualNodoBytes = actual.getValor().toString().getBytes();
+        
+        int i = 0;
+        
+        while(true){
+            if(nuevoNodoBytes[i] > actualNodoBytes[i]){
+                
+                if(actual.getNodoDerecho() != null){
+                    actual = actual.getNodoDerecho();
+                    actualNodoBytes = actual.getValor().toString().getBytes();
+                    i = 0;
+                }else{
+                    System.out.println("no retorna");
+                    return -1;
+                }
+            }else if(nuevoNodoBytes[i] < actualNodoBytes[i]){
+                if(actual.getNodoIzquierdo() != null){
+                    actual = actual.getNodoIzquierdo();
+                    actualNodoBytes = actual.getValor().toString().getBytes();
+                    i = 0;
+                }else{
+                    System.out.println("no retorna");
+                    return -1;
+                }
+            }else{
+                i++;
+                if(i == actualNodoBytes.length && i == nuevoNodoBytes.length){
+                    System.out.println("retorna");
+                    return actual;
+                        
+                }else if(i+1 > actualNodoBytes.length){
+                    if(actual.getNodoDerecho() != null){
+                        actual = actual.getNodoDerecho();
+                        actualNodoBytes = actual.getValor().toString().getBytes();
+                        i = 0;
+                    }else{
+                        System.out.println("no retorna");
+                        return -1;
+                    }
+                        
+                }else if(i+1 > nuevoNodoBytes.length){
+                    if(actual.getNodoIzquierdo() != null){
+                        actual = actual.getNodoIzquierdo();
+                        actualNodoBytes = actual.getValor().toString().getBytes();
+                        i = 0;
+                    }else{
+                        System.out.println("no retorna");
+                        return -1;
                     }
                 }
             }
