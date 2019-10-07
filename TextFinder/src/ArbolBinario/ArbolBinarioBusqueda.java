@@ -20,7 +20,7 @@ public class ArbolBinarioBusqueda<T> {
      */
     public T findMin(){
         Nodo<T> temp = raiz;
-        while(temp!=null){
+        while(temp.getNodoIzquierdo()!=null){
             temp = temp.getNodoIzquierdo();
         }
         return temp.getValor();
@@ -31,7 +31,7 @@ public class ArbolBinarioBusqueda<T> {
      */
     public T findMax(){
         Nodo<T> temp = raiz;
-        while(temp!=null){
+        while(temp.getNodoDerecho()!=null){
             temp = temp.getNodoDerecho();
         }
         return temp.getValor();
