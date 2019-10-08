@@ -11,10 +11,12 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeView;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 /**
@@ -24,19 +26,26 @@ import javafx.stage.FileChooser;
 public class FXMLDocumentController implements Initializable {
     
     @FXML
-    MenuItem añadirBiblioteca;
+    MenuItem añadirBibliotecaArchivo;
     
     @FXML
-    TreeView biblioteca;
+    MenuItem añadirBibliotecaCarpeta;
+    
+    @FXML
+    TreeView<File> biblioteca;
     
     @FXML
     TextField buscaTexto;
+    
+    @FXML
+    Button buscar;
+            
     
     String ruta;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        añadirBiblioteca.setOnAction(Event ->{
+        añadirBibliotecaArchivo.setOnAction(Event ->{
             System.out.println("menú");
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Open Resource File");
@@ -51,6 +60,12 @@ public class FXMLDocumentController implements Initializable {
                 }
     
         });
-        buscaTexto.getText();
-    }
+        buscar.setOnAction(event ->{
+            String busqueda = buscaTexto.getText();
+            //arbolote.buscarElemento(busqueda);
+            //TODO
+        });
+        
+        }
+    
 }
